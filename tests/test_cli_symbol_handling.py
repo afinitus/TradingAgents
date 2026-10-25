@@ -35,6 +35,8 @@ def test_normalize_symbol_crypto_and_passthrough(raw, expected):
     ("AAPL", True),
     ("0700.HK", True),
     ("^GSPC", True),
+    ("XAUUSD+", True),          # broker CFD marker, stripped by normalize_symbol
+    ("+", False),               # marker alone is not a symbol
     ("", True),                 # empty -> defaults to SPY downstream
     ("bad symbol!", False),     # space + '!' rejected
     ("A" * 40, False),          # too long
